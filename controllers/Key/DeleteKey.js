@@ -1,7 +1,7 @@
-import KeyService from '../../models/Key_Service';
-import logger from '../utils/logger';
+import KeyService from '@/models/Key_Service';
+import logger from '@/lib/logger';
 
-export default DeleteKey = async (req, res) => {
+const DeleteKey = async (req, res) => {
     try {
         const { name } = req.body;
         const userId = req.headers['x-user-id'];
@@ -38,3 +38,4 @@ export default DeleteKey = async (req, res) => {
         res.status(500).json({ message: 'Error deleting key', error: error.message });
     }
 };
+export default DeleteKey

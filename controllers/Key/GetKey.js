@@ -1,12 +1,12 @@
-import KeyService from '../../models/Key_Service';
-import logger from '../utils/logger';
+import KeyService from '@/models/Key_Service';
+import logger from '@/lib/logger';
 
-export default GetKey = async (req, res) => {
+const GetKey = async (req, res) => {
     try {
-      //  GET /api/Platform_service/service/key?platformId=123&keyName=testKey
-
-        const { platformId, keyName } = req.query;
-
+        //  GET /api/Platform_service/service/key?platformId=123&keyName=testKey
+        let { platformId, keyName } = req.query;
+        platformId = platformId || req.headers['x-user-id'];
+        
         if (!platformId) {
             return res.status(400).json({ message: "Platform ID is required", status: "NACK" });
         }
@@ -42,3 +42,4 @@ export default GetKey = async (req, res) => {
         res.status(500).json({ message: 'Error retrieving keys', error: error.message });
     }
 };
+export default GetKey

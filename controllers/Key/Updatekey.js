@@ -1,7 +1,7 @@
-import KeyService from '../../models/Key_Service';
-import logger from '../utils/logger';
+import KeyService from '@/models/Key_Service';
+import logger from '@/lib/logger';
 
-export default UpdateKey = async (req, res) => {
+const UpdateKey = async (req, res) => {
     try {
         const { name, value, expiry } = req.body;
         const userId = req.headers['x-user-id'];
@@ -36,3 +36,4 @@ export default UpdateKey = async (req, res) => {
         res.status(500).json({ message: 'Error updating key', error: error.message });
     }
 };
+export default UpdateKey 
