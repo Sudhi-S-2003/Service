@@ -5,6 +5,7 @@ import logger from '../lib/logger'; // Using pino logger for better logging
 
 const PlatformMailServiceSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  user_id:{ type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   token: { type: String, default: null }, // JWT token field
